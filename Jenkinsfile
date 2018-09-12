@@ -1,21 +1,38 @@
+#!groovy
+
 pipeline {
     agent { label 'linux_01' }
-
+     tools { 
+        maven 'Maven 3.3.9' 
+        jdk 'jdk8' 
+    }
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Contruindo..'
                 script {'sh java -version'}
+                
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'testando..'
+            }
+        }
+        stage('Package') {
+            steps {
+                echo 'Empacotando....'
+            }
+        }
+        
+        stage('Nexus') {
+            steps {
+                echo 'Versionando e guardando....'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Implantando no Ambiente @ParamAmbiente DEV CERT HOM....'
             }
         }
     }
