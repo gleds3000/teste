@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Contruindo..'
+                echo 'Construindo..'
                 script {'sh java -version'}
                  sh '''
                     echo "PATH = ${PATH}"
